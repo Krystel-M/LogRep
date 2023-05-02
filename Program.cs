@@ -14,8 +14,8 @@ var serverVersion = new MySqlServerVersion(new Version(8, 0, 33));
   //  options.UseSqlServer(connectionString));
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
-builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
-    .AddEntityFrameworkStores<RecipeContext>();
+//builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
+   // .AddEntityFrameworkStores<RecipeContext>();
 builder.Services.AddControllersWithViews();
 builder.Services.AddDbContext<RecipeContext>(dbContextOptions => dbContextOptions.UseMySql(connectionString, serverVersion));
 

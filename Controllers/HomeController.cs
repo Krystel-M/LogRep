@@ -59,7 +59,7 @@ namespace LogRep.Controllers
             {
                 context.Add(recipe);
                 await context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction(nameof(Log));
             }
             return View(recipe);
         }
@@ -143,7 +143,7 @@ namespace LogRep.Controllers
             {
                 context.Update(recipe);
                 await context.SaveChangesAsync(); // Update the changes in the database
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction(nameof(Log));
             }
 
             return View(recipe);
@@ -217,7 +217,8 @@ namespace LogRep.Controllers
             context.Recipes.Remove(log);
             await context.SaveChangesAsync();
 
-            return RedirectToAction("Log", "Home");
+            /*return RedirectToAction("Log", "Home");*/
+            return RedirectToAction(nameof(Log));
         }
 
 
