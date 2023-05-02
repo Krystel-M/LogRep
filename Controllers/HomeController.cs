@@ -10,12 +10,12 @@ namespace LogRep.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
-        private readonly RecipeContext _context;
+        private readonly RecipeContext context;
 
-        public HomeController(ILogger<HomeController> logger, RecipeContext context)
+        public HomeController(ILogger<HomeController> logger, RecipeContext Dbcontext)
         {
             _logger = logger;
-            _context = context;
+            context = Dbcontext;
         }
 
         public IActionResult Index()
@@ -40,18 +40,18 @@ namespace LogRep.Controllers
         }
 
 
-        /*[HttpPost]
+        [HttpPost]
         public async Task<IActionResult> Create(Recipe recipe)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(recipe);
-                await _context.SaveChangesAsync();
+                context.Add(recipe);
+                await context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
             return View(recipe);
-        }*/
-        [HttpPost]
+        }
+        /*[HttpPost]
         public async Task<IActionResult> Create(Recipe recipe)
         {
             if (ModelState.IsValid)
@@ -68,7 +68,7 @@ namespace LogRep.Controllers
                 return RedirectToAction(nameof(Index));
             }
             return View(recipe);
-        }
+        }*/
 
         public async Task<IActionResult> Edit(int? id)
         {
@@ -77,7 +77,7 @@ namespace LogRep.Controllers
                 return NotFound();
             }
 
-            var recipe = await _context.Recipes.FindAsync(id);
+            var recipe = await context.Recipes.FindAsync(id);
             if (recipe == null)
             {
                 return NotFound();
@@ -95,8 +95,8 @@ namespace LogRep.Controllers
 
             if (ModelState.IsValid)
             {
-                _context.Update(recipe);
-                await _context.SaveChangesAsync();
+                context.Update(recipe);
+                await context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
             return View(recipe);
@@ -109,7 +109,7 @@ namespace LogRep.Controllers
                 return NotFound();
             }
 
-            var recipe = await _context.Recipes
+            var recipe = await context.Recipes
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (recipe == null)
             {
@@ -122,9 +122,9 @@ namespace LogRep.Controllers
         [HttpPost, ActionName("Delete")]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var recipe = await _context.Recipes.FindAsync(id);
-            _context.Recipes.Remove(recipe);
-            await _context.SaveChangesAsync();
+            var recipe = await context.Recipes.FindAsync(id);
+            context.Recipes.Remove(recipe);
+            await context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
     }
