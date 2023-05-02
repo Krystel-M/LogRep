@@ -1,0 +1,33 @@
+﻿@model LogRep.Models.Recipe
+
+@{
+    ViewData["Title"] = "Edit Recipe";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<form asp-action="Edit">
+    <div class="form-group">
+        <label asp-for="Name" class="control-label">Name</label>
+        <input asp-for="Name" class="form-control" />
+        <span asp-validation-for="Name" class="text-danger">Name</span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Description" class="control-label">Description</label>
+        <input asp-for="Description" class="form-control" />
+        <span asp-validation-for="Description" class="text-danger">Description</span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Ingredients" class="control-label">Ingredits</label>
+        <input asp-for="Ingredients" class="form-control" />
+        <span asp-validation-for="Ingredients" class="text-danger">Ingredits</span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Instructions" class="control-label">Instructions</label>
+        <input asp-for="Instructions" class="form-control" />
+        <span asp-validation-for="Instructions" class="text-danger">Instructions</span>
+    </div>
+    <div class="form-group">
+        <input type="submit" value="Save" class="btn btn-primary" />
+    </div>
+</form>

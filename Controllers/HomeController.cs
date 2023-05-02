@@ -22,11 +22,23 @@ namespace LogRep.Controllers
         {
             return View();
         }
+        /*  public async Task<IActionResult> Log()
+          {
+              var recipes = await _context.Recipes.ToListAsync();
+              return View(recipes);
+          }*/
+        public async Task<IActionResult> Log()
+        {
+            var recipes = await context.Recipes.ToListAsync();
+            return View(recipes);
+        }
 
-        public IActionResult Log()
+
+
+     /*   public IActionResult Log()
         {
             return View();
-        }
+        }*/
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
@@ -70,6 +82,73 @@ namespace LogRep.Controllers
             return View(recipe);
         }*/
 
+        /*       public async Task<IActionResult> Edit(int? id)
+               {
+                   if (id == null)
+                   {
+                       return NotFound();
+                   }
+
+                   var recipe = await context.Recipes.FindAsync(id);
+                   if (recipe == null)
+                   {
+                       return NotFound();
+                   }
+                   return View(recipe);
+               }
+
+               [HttpPost]
+               public async Task<IActionResult> Edit(int id, Recipe recipe)
+               {
+                   if (id != recipe.Id)
+                   {
+                       return NotFound();
+                   }
+
+                   if (ModelState.IsValid)
+                   {
+                       context.Update(recipe);
+                       await context.SaveChangesAsync();
+                       return RedirectToAction(nameof(Index));
+                   }
+                   return View(recipe);
+               }*/
+        /*        public IActionResult Edit(int id)
+                {
+                    Recipe recipe = context.Recipes.FirstOrDefault(x => x.Id == id);
+                    return View(recipe);
+                }
+
+                [HttpPost]
+                *//*        public async Task<IActionResult> Edit(Recipe recipe)
+                        {
+                            if (ModelState.IsValid)
+                            {
+                                context.Update(recipe);
+                                await context.SaveChangesAsync();
+                                return RedirectToAction(nameof(Log));
+                            }
+                            return View(recipe);
+                        }
+                */
+        [HttpPost]
+        public async Task<IActionResult> Edit(int id, Recipe recipe)
+        {
+            if (id != recipe.Id)
+            {
+                return NotFound();
+            }
+
+            if (ModelState.IsValid)
+            {
+                context.Update(recipe);
+                await context.SaveChangesAsync(); // Update the changes in the database
+                return RedirectToAction(nameof(Index));
+            }
+
+            return View(recipe);
+        }
+
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -85,22 +164,6 @@ namespace LogRep.Controllers
             return View(recipe);
         }
 
-        [HttpPost]
-        public async Task<IActionResult> Edit(int id, Recipe recipe)
-        {
-            if (id != recipe.Id)
-            {
-                return NotFound();
-            }
-
-            if (ModelState.IsValid)
-            {
-                context.Update(recipe);
-                await context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
-            }
-            return View(recipe);
-        }
 
         public async Task<IActionResult> Delete(int? id)
         {
@@ -119,13 +182,44 @@ namespace LogRep.Controllers
             return View(recipe);
         }
 
-        [HttpPost, ActionName("Delete")]
+        /*[HttpPost, ActionName("Delete")]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var recipe = await context.Recipes.FindAsync(id);
             context.Recipes.Remove(recipe);
             await context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
+        }*/
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        /* public async Task<IActionResult> Delete(int id)
+         {
+             var log = await context.Recipes.FindAsync(id);
+             if (log == null)
+             {
+                 return NotFound();
+             }
+
+             context.Recipes.Remove(log);
+             await context.SaveChangesAsync();
+
+             return RedirectToAction(nameof(Log));
+         }*/
+ 
+        public async Task<IActionResult> Delete(int id)
+        {
+            var log = await context.Recipes.FindAsync(id);
+            if (log == null)
+            {
+                return NotFound();
+            }
+
+            context.Recipes.Remove(log);
+            await context.SaveChangesAsync();
+
+            return RedirectToAction("Log", "Home");
         }
+
+
     }
 }
