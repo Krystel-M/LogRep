@@ -1,4 +1,9 @@
 ﻿@model LogRep.Models.Recipe
+@{
+    ViewData["Title"] = "Create";
+}
+<h1>@ViewData["Title"]</h1>
+
 
 <h1>Create</h1>
 
@@ -8,14 +13,14 @@
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
-                <label asp-for="Name" class="control-label"></label>
+                <label asp-for="Name" class="control-label">uhhh</label>
                 <input asp-for="Name" class="form-control" />
-                <span asp-validation-for="Name" class="text-danger"></span>
+                <span asp-validation-for="Name" class="text-danger">uhhh</span>
             </div>
             <div class="form-group">
-                <label asp-for="Description" class="control-label"></label>
-                <textarea asp-for="Description" class="form-control"></textarea>
-                <span asp-validation-for="Description" class="text-danger"></span>
+                <label asp-for="Description" class="control-label">uhhh</label>
+                <textarea asp-for="Description" class="form-control">uhhh</textarea>
+                <span asp-validation-for="Description" class="text-danger">uhhh</span>
             </div>
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />
