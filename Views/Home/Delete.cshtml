@@ -43,7 +43,9 @@
 
         <div class="form-actions no-color">
             <input type="submit" value="Delete" class="btn btn-danger" /> |
-            @Html.ActionLink("Back to List", "Index")
+            @*@Html.ActionLink("Back to List", "Index")*@
+            <input type="button" value="Back to List" class="btn btn-danger" onclick="location.href='@Url.Action("Log")'" />
+
         </div>
     }
 </div>
