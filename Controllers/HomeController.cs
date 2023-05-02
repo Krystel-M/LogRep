@@ -34,17 +34,36 @@ namespace LogRep.Controllers
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
 
-        public async Task<IActionResult> Create()
+        public IActionResult Create()
         {
-            return View();
+            return View(new Recipe());
         }
 
-        [HttpPost]
+
+        /*[HttpPost]
         public async Task<IActionResult> Create(Recipe recipe)
         {
             if (ModelState.IsValid)
             {
                 _context.Add(recipe);
+                await _context.SaveChangesAsync();
+                return RedirectToAction(nameof(Index));
+            }
+            return View(recipe);
+        }*/
+        [HttpPost]
+        public async Task<IActionResult> Create(Recipe recipe)
+        {
+            if (ModelState.IsValid)
+            {
+                if (recipe.Id != 0)
+                {
+                    _context.Update(recipe);
+                }
+                else
+                {
+                    _context.Add(recipe);
+                }
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }

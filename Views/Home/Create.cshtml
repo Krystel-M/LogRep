@@ -1,4 +1,4 @@
-﻿@model LogRep.Models.Recipe
+﻿@*@model LogRep.Models.Recipe
 @{
     ViewData["Title"] = "Create";
 }
@@ -24,6 +24,52 @@
             </div>
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>*@
+@model LogRep.Models.Recipe
+
+@if (Model.Id != 0)
+{
+    <h1>Edit Recipe</h1>
+}
+else
+{
+    <h1>Create Recipe</h1>
+}
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            @if (Model.Id != 0)
+            {
+                <input type="hidden" asp-for="Id" />
+            }
+            <div class="form-group">
+                <label asp-for="Name" class="control-label">uhh</label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger">uhh</span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Description" class="control-label">uhh</label>
+                <textarea asp-for="Description" class="form-control">uhh</textarea>
+                <span asp-validation-for="Description" class="text-danger">uhh</span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Ingredients" class="control-label">Ingredients</label>
+                <textarea asp-for="Ingredients" class="form-control">uIngredientshh</textarea>
+                <span asp-validation-for="Ingredients" class="text-danger">Ingredients</span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Instructions" class="control-label">uhh</label>
+                <textarea asp-for="Instructions" class="form-control">uhh</textarea>
+                <span asp-validation-for="Instructions" class="text-danger">uhh</span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
             </div>
         </form>
     </div>
