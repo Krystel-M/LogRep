@@ -23,23 +23,13 @@ namespace LogRep.Controllers
              return View();
          }*/
 
-        public async Task<IActionResult> Index(string searchString)
+        
+
+        /*[HttpPost]
+        public string Index(string searchString, bool notUsed)
         {
-            if (context.Recipes == null)
-            {
-                return Problem("Entity set 'RecipeContext.Recipe'  is null.");
-            }
-
-            var recipes = from r in context.Recipes
-                         select r;
-
-            if (!String.IsNullOrEmpty(searchString))
-            {
-                recipes = recipes.Where(s => s.Name!.Contains(searchString));
-            }
-
-            return View(await recipes.ToListAsync());
-        }
+            return "From [HttpPost]Index: filter on " + searchString;
+        }*/
         /*  public async Task<IActionResult> Log()
           {
               var recipes = await _context.Recipes.ToListAsync();
@@ -52,11 +42,27 @@ namespace LogRep.Controllers
         }
 
 
-
-     /*   public IActionResult Log()
+        public async Task<IActionResult> Index(string searchString)
         {
-            return View();
-        }*/
+            if (context.Recipes == null)
+            {
+                return Problem("Entity set 'RecipeContext.Recipe'  is null.");
+            }
+
+            var recipes = from r in context.Recipes
+                          select r;
+
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                recipes = recipes.Where(s => s.Name!.Contains(searchString));
+            }
+
+            return View(await recipes.ToListAsync());
+        }
+        /*   public IActionResult Log()
+           {
+               return View();
+           }*/
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
