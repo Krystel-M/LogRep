@@ -18,9 +18,27 @@ namespace LogRep.Controllers
             context = Dbcontext;
         }
 
-        public IActionResult Index()
+        /* public IActionResult Index()
+         {
+             return View();
+         }*/
+
+        public async Task<IActionResult> Index(string searchString)
         {
-            return View();
+            if (context.Recipes == null)
+            {
+                return Problem("Entity set 'RecipeContext.Recipe'  is null.");
+            }
+
+            var recipes = from r in context.Recipes
+                         select r;
+
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                recipes = recipes.Where(s => s.Name!.Contains(searchString));
+            }
+
+            return View(await recipes.ToListAsync());
         }
         /*  public async Task<IActionResult> Log()
           {

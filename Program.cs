@@ -8,7 +8,7 @@ builder.Services.AddControllersWithViews();
 
 
 var connectionString = "server=localhost;user=log;password=log;database=log";
-var serverVersion = new MySqlServerVersion(new Version(8, 0, 33));
+var serverVersion = new MySqlServerVersion(new Version(8, 0, 32));
 //var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
 //builder.Services.AddDbContext<ApplicationDbContext>(options =>
   //  options.UseSqlServer(connectionString));

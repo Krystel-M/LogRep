@@ -34,6 +34,13 @@
 
 <h1>@ViewData["Title"]</h1>
 
+<form asp-controller="Home" asp-action="Index">
+    <p>
+        Recipe Name: <input type="text" name="SearchString" />
+        <input type="submit" value="Filter" />
+    </p>
+</form>
+
 <table class="table">
     <thead>
         <tr>

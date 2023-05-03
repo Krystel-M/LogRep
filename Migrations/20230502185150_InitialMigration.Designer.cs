@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace LogRep.Migrations
 {
     [DbContext(typeof(RecipeContext))]
-    [Migration("20230501154510_Intialmigration")]
-    partial class Intialmigration
+    [Migration("20230502185150_InitialMigration")]
+    partial class InitialMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
