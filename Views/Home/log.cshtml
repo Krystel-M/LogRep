@@ -33,6 +33,13 @@
 }
 
 <h1>@ViewData["Title"]</h1>
+<div class="form-group">
+    <form asp-controller="Home" asp-action="Log" method="post">
+        <label for="searchString">Search by name:</label>
+        <input type="text" class="form-control" id="searchString" name="searchString" value="@ViewBag.SearchString" />
+        <button type="submit" class="btn btn-primary">Search</button>
+    </form>
+</div>
 
 <table class="table">
     <thead>
