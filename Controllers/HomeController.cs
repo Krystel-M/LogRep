@@ -238,6 +238,22 @@ namespace LogRep.Controllers
             /*return RedirectToAction("Log", "Home");*/
             return RedirectToAction(nameof(Log));
         }
+        [HttpPost]
+        public async Task<IActionResult> Log(string searchString)
+        {
+            var recipes = from r in context.Recipes
+                          select r;
+
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                recipes = recipes.Where(s => s.Name.Contains(searchString));
+            }
+
+            return View(await recipes.ToListAsync());
+        }
+
+
+
 
 
     }
