@@ -23,23 +23,7 @@ namespace LogRep.Controllers
              return View();
          }*/
 
-        public async Task<IActionResult> Index(string searchString)
-        {
-            if (context.Recipes == null)
-            {
-                return Problem("Entity set 'RecipeContext.Recipe'  is null.");
-            }
-
-            var recipes = from r in context.Recipes
-                         select r;
-
-            if (!String.IsNullOrEmpty(searchString))
-            {
-                recipes = recipes.Where(s => s.Name!.Contains(searchString));
-            }
-
-            return View(await recipes.ToListAsync());
-        }
+       
         /*  public async Task<IActionResult> Log()
           {
               var recipes = await _context.Recipes.ToListAsync();
