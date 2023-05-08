@@ -1,8 +1,40 @@
 ﻿@{
     ViewData["Title"] = "Home";
 }
-
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>These are your most recent recipe log entries</p>
-</div>
+<header class="bg-secondary py-5">
+    <div class="container px-5">
+        <div class="row gx-5 align-items-center justify-content-center">
+            <div class="col-lg-8 col-xl-7 col-xxl-6">
+                <div class="my-5 text-center text-xl-start">
+                    <h1 class="display-5 fw-bolder text-white mb-2">Keep your recipes organized with Recipe Log</h1>
+                    <p class="lead fw-normal text-white-50 mb-4">Easily add, store, and access all of your favorite recipes in one convenient location.</p>
+                    <div class="d-grid gap-3 d-sm-flex justify-content-sm-center justify-content-xl-start">
+                        <a class="btn btn-warning btn-lg px-4 me-sm-3" asp-controller="Home" asp-action="Create">Get Started</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-5 col-xxl-6 d-none d-xl-block text-center"><img class="img-fluid rounded-3 my-5" src="https://dummyimage.com/600x400/343a40/6c757d" alt="..." /></div>
+        </div>
+    </div>
+</header>
+<section class="py-5" id="features">
+    <div class="container px-5 my-5">
+        <div class="row gx-5">
+            <div class="col-lg-4 mb-5 mb-lg-0"><h2 class="fw-bolder mb-0">Features</h2></div>
+            <div class="col-lg-8">
+                <div class="row gx-5 row-cols-1 row-cols-md-2">
+                    <div class="col mb-5 h-100">
+                        <div class="feature bg-warning  text-white rounded-3 mb-3"><i class="bi bi-journal-plus">  &nbsp; &nbsp;&nbsp; &nbsp;  &nbsp; Add recipes easily</i></div>
+                        
+                        <p class="mb-0">Add recipes with just a few clicks, and keep them organized with tags and categories.</p>
+                    </div>
+                    <div class="col mb-5 h-100">
+                        <div class="feature bg-warning  text-white rounded-3 mb-3"><i class="bi bi-search">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Quickly search for recipes</i></div>
+                   
+                        <p class="mb-0">Search for recipes by keyword, ingredient, or category to find what you're looking for.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
