@@ -8,12 +8,18 @@ namespace LogRep.Migrations
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-
+            migrationBuilder.RenameColumn(
+                name: "Description",
+                table: "Recipes",
+                newName: "Protein");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
-
+            migrationBuilder.RenameColumn(
+                name: "Protein",
+                table: "Recipes",
+                newName: "Description");
         }
     }
 }

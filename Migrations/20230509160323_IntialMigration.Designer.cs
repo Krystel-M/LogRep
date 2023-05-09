@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace LogRep.Migrations
 {
     [DbContext(typeof(RecipeContext))]
-    [Migration("20230507201630_IntialMigration")]
+    [Migration("20230509160323_IntialMigration")]
     partial class IntialMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -27,10 +27,6 @@ namespace LogRep.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    b.Property<string>("Description")
-                        .IsRequired()
-                        .HasColumnType("longtext");
-
                     b.Property<string>("Ingredients")
                         .IsRequired()
                         .HasColumnType("longtext");
@@ -40,6 +36,10 @@ namespace LogRep.Migrations
                         .HasColumnType("longtext");
 
                     b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("Protein")
                         .IsRequired()
                         .HasColumnType("longtext");
 

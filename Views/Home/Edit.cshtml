@@ -12,10 +12,21 @@
         <input asp-for="Name" class="form-control" />
         <span asp-validation-for="Name" class="text-danger">Name</span>
     </div>
+@*    <div class="form-group">
+        <label asp-for="Protein" class="control-label">Protein</label>
+        <input asp-for="Protein" class="form-control" />
+        <span asp-validation-for="Protein" class="text-danger">Protein</span>
+    </div>*@
     <div class="form-group">
-        <label asp-for="Description" class="control-label">Description</label>
-        <input asp-for="Description" class="form-control" />
-        <span asp-validation-for="Description" class="text-danger">Description</span>
+        <label asp-for="Protein" class="control-label">Protein</label>
+        <select asp-for="Protein" class="form-control">
+            <option value="">-- Select --</option>
+            <option value="Beef">Beef</option>
+            <option value="Chicken">Chicken</option>
+            <option value="Fish">Fish</option>
+            <option value="Other">Other</option>
+        </select>
+        <span asp-validation-for="Protein" class="text-danger"></span>
     </div>
     <div class="form-group">
         <label asp-for="Ingredients" class="control-label">Ingredits</label>

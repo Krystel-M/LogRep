@@ -25,10 +25,6 @@ namespace LogRep.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    b.Property<string>("Description")
-                        .IsRequired()
-                        .HasColumnType("longtext");
-
                     b.Property<string>("Ingredients")
                         .IsRequired()
                         .HasColumnType("longtext");
@@ -38,6 +34,10 @@ namespace LogRep.Migrations
                         .HasColumnType("longtext");
 
                     b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("Protein")
                         .IsRequired()
                         .HasColumnType("longtext");
 
