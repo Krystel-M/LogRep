@@ -19,7 +19,7 @@ builder.Services.AddDefaultIdentity<IdentityUser>
 }).AddEntityFrameworkStores<RecipeContext>();
 
 var connectionString = "server=localhost;user=log;password=log;database=log";
-var serverVersion = new MySqlServerVersion(new Version(8, 0, 33));
+var serverVersion = new MySqlServerVersion(new Version(8, 0, 32));
 //var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
 //builder.Services.AddDbContext<ApplicationDbContext>(dbContextOptions => dbContextOptions.UseMySql(connectionString, serverVersion));
 //builder.Services.AddDatabaseDeveloperPageExceptionFilter();

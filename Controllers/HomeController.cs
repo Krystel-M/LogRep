@@ -1,5 +1,6 @@
 ﻿using LogRep.Data;
 using LogRep.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
@@ -7,6 +8,7 @@ using System.Diagnostics;
 
 namespace LogRep.Controllers
 {
+    [Authorize]
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
@@ -18,6 +20,7 @@ namespace LogRep.Controllers
             context = Dbcontext;
         }
 
+        [AllowAnonymous]
         public IActionResult Index()
         {
             return View();
