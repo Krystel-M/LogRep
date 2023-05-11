@@ -1,5 +1,6 @@
 ﻿using LogRep.Data;
 using LogRep.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
@@ -7,6 +8,7 @@ using System.Diagnostics;
 
 namespace LogRep.Controllers
 {
+    [Authorize]
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
@@ -18,10 +20,29 @@ namespace LogRep.Controllers
             context = Dbcontext;
         }
 
+        [AllowAnonymous]
         public IActionResult Index()
         {
             return View();
         }
+
+        /*public async Task<IActionResult> Index(string searchString)
+        {
+            if (context.Recipes == null)
+            {
+                return Problem("Entity set 'RecipeContext.Recipe'  is null.");
+            }
+
+            var recipes = from r in context.Recipes
+                          select r;
+
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                recipes = recipes.Where(s => s.Name!.Contains(searchString));
+            }
+
+            return View(await recipes.ToListAsync());
+        }*/
         /*  public async Task<IActionResult> Log()
           {
               var recipes = await _context.Recipes.ToListAsync();
@@ -220,6 +241,22 @@ namespace LogRep.Controllers
             /*return RedirectToAction("Log", "Home");*/
             return RedirectToAction(nameof(Log));
         }
+        [HttpPost]
+        public async Task<IActionResult> Log(string searchString)
+        {
+            var recipes = from r in context.Recipes
+                          select r;
+
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                recipes = recipes.Where(s => s.Name.Contains(searchString));
+            }
+
+            return View(await recipes.ToListAsync());
+        }
+
+
+
 
 
     }
